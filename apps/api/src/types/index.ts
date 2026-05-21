@@ -1,12 +1,12 @@
-import type { InferSelectModel, InferInsertModel } from "drizzle-orm";
+import type { InferInsertModel, InferSelectModel } from "drizzle-orm";
 import type {
+  analyticsLogs,
+  cartItems,
+  cartSessions,
   categories,
   products,
   productVariants,
-  analyticsLogs,
-  cartSessions,
-  cartItems,
-} from "../db/schema";
+} from "@/db/schema";
 
 // Select Models
 export type Category = InferSelectModel<typeof categories>;

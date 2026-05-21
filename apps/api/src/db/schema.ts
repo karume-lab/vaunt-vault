@@ -1,15 +1,15 @@
+import { relations } from "drizzle-orm";
 import {
+  bigserial,
+  boolean,
+  decimal,
+  integer,
   pgTable,
+  text,
+  timestamp,
   uuid,
   varchar,
-  text,
-  decimal,
-  boolean,
-  timestamp,
-  integer,
-  bigserial,
 } from "drizzle-orm/pg-core";
-import { relations } from "drizzle-orm";
 
 export const categories = pgTable("categories", {
   id: uuid("id").primaryKey().defaultRandom(),
@@ -23,7 +23,9 @@ export const categoriesRelations = relations(categories, ({ many }) => ({
 
 export const products = pgTable("products", {
   id: uuid("id").primaryKey().defaultRandom(),
-  categoryId: uuid("category_id").references(() => categories.id, { onDelete: "cascade" }),
+  categoryId: uuid("category_id").references(() => categories.id, {
+    onDelete: "cascade",
+  }),
   title: varchar("title").notNull(),
   description: text("description"),
   basePrice: decimal("base_price", { precision: 10, scale: 2 }).notNull(),
@@ -42,20 +44,25 @@ export const productsRelations = relations(products, ({ one, many }) => ({
 
 export const productVariants = pgTable("product_variants", {
   id: uuid("id").primaryKey().defaultRandom(),
-  productId: uuid("product_id").references(() => products.id, { onDelete: "cascade" }),
+  productId: uuid("product_id").references(() => products.id, {
+    onDelete: "cascade",
+  }),
   color: varchar("color"),
   size: varchar("size"),
   stockQty: integer("stock_qty").default(0),
   imageUrl: varchar("image_url", { length: 550 }),
 });
 
-export const productVariantsRelations = relations(productVariants, ({ one, many }) => ({
-  product: one(products, {
-    fields: [productVariants.productId],
-    references: [products.id],
+export const productVariantsRelations = relations(
+  productVariants,
+  ({ one, many }) => ({
+    product: one(products, {
+      fields: [productVariants.productId],
+      references: [products.id],
+    }),
+    cartItems: many(cartItems),
   }),
-  cartItems: many(cartItems),
-}));
+);
 
 export const analyticsLogs = pgTable("analytics_logs", {
   id: bigserial("id", { mode: "number" }).primaryKey(),
@@ -69,7 +76,9 @@ export const analyticsLogs = pgTable("analytics_logs", {
 export const cartSessions = pgTable("cart_sessions", {
   id: uuid("id").primaryKey().defaultRandom(),
   email: varchar("email"),
-  status: varchar("status", { enum: ["active", "checkout_initiated", "purchased", "abandoned"] }).default("active"),
+  status: varchar("status", {
+    enum: ["active", "checkout_initiated", "purchased", "abandoned"],
+  }).default("active"),
   createdAt: timestamp("created_at").defaultNow(),
   updatedAt: timestamp("updated_at").defaultNow(),
 });
@@ -80,8 +89,12 @@ export const cartSessionsRelations = relations(cartSessions, ({ many }) => ({
 
 export const cartItems = pgTable("cart_items", {
   id: uuid("id").primaryKey().defaultRandom(),
-  cartSessionId: uuid("cart_session_id").references(() => cartSessions.id, { onDelete: "cascade" }),
-  variantId: uuid("variant_id").references(() => productVariants.id, { onDelete: "cascade" }),
+  cartSessionId: uuid("cart_session_id").references(() => cartSessions.id, {
+    onDelete: "cascade",
+  }),
+  variantId: uuid("variant_id").references(() => productVariants.id, {
+    onDelete: "cascade",
+  }),
   quantity: integer("quantity").default(1),
 });
 
