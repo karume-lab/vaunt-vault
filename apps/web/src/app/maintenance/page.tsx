@@ -24,7 +24,7 @@ export default function Maintenance() {
         // biome-ignore lint/security/noDangerouslySetInnerHtml: Need inline style for keyframes
         dangerouslySetInnerHTML={{
           __html: `
-        #bouncing-logo {
+        .bouncing-logo {
           animation: bounce-x 13s linear infinite alternate, 
                      bounce-y 7s linear infinite alternate;
         }
@@ -42,8 +42,8 @@ export default function Maintenance() {
         }}
       />
 
-      <Box pos="fixed" inset={0} style={{ pointerEvents: "none" }} zIndex={50}>
-        <Center id="bouncing-logo" pos="absolute" w={150} h={150}>
+      <Box pos="fixed" inset={0} style={{ pointerEvents: "none", zIndex: 50 }}>
+        <Center className="bouncing-logo" pos="absolute" w={150} h={150}>
           <MantineImage
             component={NextImage}
             src="/images/core/logo.png"
@@ -60,7 +60,7 @@ export default function Maintenance() {
       </Box>
 
       <Center mih="100vh" p="xl">
-        <Container size="xs" pos="relative" zIndex={10} ta="center">
+        <Container size="xs" pos="relative" style={{ zIndex: 10 }} ta="center">
           <Stack gap="xl">
             <Title
               order={1}
