@@ -1,22 +1,33 @@
-.border {
-  border-width: 2px;
-  border-style: solid;
-  border-color: black;
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Inter:wght@400;500;600&family=Montserrat:wght@400;500;600&family=Playfair+Display:wght@400;700&display=swap');
+
+body {
+  background-color: #e5e4de;
+  color: #42464a;
+  margin: 0;
+  padding: 0;
+  font-family: 'Inter', 'Montserrat', sans-serif;
 }
 
-.responsiveTitle {
-  font-size: 28px;
-  line-height: 1.2;
+.vault-arch {
+  border-radius: 9999px 9999px 0 0;
+  border: 1px solid #42464a;
 }
 
-@media (min-width: 640px) {
-  .responsiveTitle {
-    font-size: 32px;
-  }
+.hairline-divider {
+  border: none;
+  border-top: 1px solid #42464a;
+  width: 100%;
 }
 
-@media (min-width: 768px) {
-  .responsiveTitle {
-    font-size: 44px;
-  }
+.hairline-divider-inverse {
+  border: none;
+  border-top: 1px solid #e5e4de;
+  width: 100%;
+}
+
+.diamond-accent::before {
+  content: '◆';
+  color: #42464a;
+  display: inline-block;
+  margin-right: 8px;
 }
