@@ -17,11 +17,6 @@ export function proxy(request: NextRequest) {
     }
   }
 
-  // Redirect away from maintenance page if maintenance mode is off
-  if (!isMaintenanceMode && url.pathname === "/maintenance") {
-    return NextResponse.redirect(new URL("/", request.url));
-  }
-
   return NextResponse.next();
 }
 
