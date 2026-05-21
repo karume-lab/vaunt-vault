@@ -1,4 +1,4 @@
-import { Elysia, t } from "elysia";
+import { Elysia } from "elysia";
 import { createInsertSchema } from "drizzle-typebox";
 import { products } from "../db/schema";
 import { db } from "../db/client";
@@ -16,12 +16,16 @@ export const productsRouter = new Elysia({ prefix: "/products" })
     });
     return results;
   })
-  .post("/", async ({ body }) => {
-    const newProduct = await db.insert(products).values(body).returning();
-    return newProduct[0];
-  }, {
-    body: insertProductSchema,
-    detail: {
-      summary: "Create a new product"
-    }
-  });
+  .post(
+    "/",
+    async ({ body }) => {
+      const newProduct = await db.insert(products).values(body).returning();
+      return newProduct[0];
+    },
+    {
+      body: insertProductSchema,
+      detail: {
+        summary: "Create a new product",
+      },
+    },
+  );
