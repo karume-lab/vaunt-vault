@@ -1,8 +1,7 @@
+import { auth } from "@api/auth";
+import { productsRouter } from "@api/routes/products";
 import { cors } from "@elysiajs/cors";
 import { Elysia, t } from "elysia";
-import { auth } from "@api/auth";
-
-import { productsRouter } from "@api/routes/products";
 
 const adminRouter = new Elysia({ prefix: "/admin" }).get(
   "/metrics",

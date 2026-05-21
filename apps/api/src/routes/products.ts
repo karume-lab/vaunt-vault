@@ -1,8 +1,8 @@
-import { createInsertSchema } from "drizzle-typebox";
-import { Elysia } from "elysia";
 import { db } from "@api/db/client";
 import { products } from "@api/db/schema";
 import type { InsertProduct, ProductWithVariants } from "@api/types";
+import { createInsertSchema } from "drizzle-typebox";
+import { Elysia } from "elysia";
 
 // Derived cleanly from the Drizzle schema to match the Insert model perfectly
 const insertProductSchema = createInsertSchema(products);
