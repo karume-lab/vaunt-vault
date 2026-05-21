@@ -1,20 +1,24 @@
-import Image from "next/image";
-import Logo from "../../../public/images/core/logo.png";
+"use client";
+
+import {
+  Box,
+  Center,
+  Container,
+  Image as MantineImage,
+  Stack,
+  Text,
+  Title,
+} from "@mantine/core";
+import NextImage from "next/image";
 
 export default function Maintenance() {
   return (
-    <div
-      style={{
-        backgroundColor: "#e5e4de",
-        color: "#42464a",
-        minHeight: "100vh",
-        display: "flex",
-        alignItems: "center",
-        justifyContent: "center",
-        padding: "1.5rem",
-        overflow: "hidden",
-        position: "relative",
-      }}
+    <Box
+      bg="linen.1"
+      c="slate.7"
+      mih="100vh"
+      pos="relative"
+      style={{ overflow: "hidden" }}
     >
       <style
         // biome-ignore lint/security/noDangerouslySetInnerHtml: Need inline style for keyframes
@@ -38,84 +42,52 @@ export default function Maintenance() {
         }}
       />
 
-      <div
-        style={{
-          position: "fixed",
-          inset: 0,
-          pointerEvents: "none",
-          zIndex: 50,
-        }}
-      >
-        <div
-          id="bouncing-logo"
-          style={{
-            position: "absolute",
-            height: "150px",
-            width: "150px",
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
-          }}
-        >
-          <Image
-            src={Logo}
+      <Box pos="fixed" inset={0} style={{ pointerEvents: "none" }} zIndex={50}>
+        <Center id="bouncing-logo" pos="absolute" w={150} h={150}>
+          <MantineImage
+            component={NextImage}
+            src="/images/core/logo.png"
             alt="VauntVault Logo"
             width={150}
             height={150}
+            radius="md"
             style={{
-              height: "100%",
-              width: "auto",
-              borderRadius: "1rem",
               boxShadow: "0 25px 50px -12px rgba(0, 0, 0, 0.25)",
-              border: "1px solid #42464a",
+              border: "1px solid var(--mantine-color-slate-7)",
             }}
           />
-        </div>
-      </div>
+        </Center>
+      </Box>
 
-      <div
-        style={{
-          maxWidth: "28rem",
-          width: "100%",
-          textAlign: "center",
-          position: "relative",
-          zIndex: 10,
-        }}
-      >
-        <h1
-          style={{
-            fontSize: "2.25rem",
-            fontWeight: "bold",
-            marginBottom: "1rem",
-            letterSpacing: "-0.025em",
-            fontFamily: "'Cinzel', 'Playfair Display', 'Georgia', serif",
-          }}
-        >
-          Under Maintenance
-        </h1>
-        <p
-          style={{
-            opacity: 0.7,
-            fontSize: "1.125rem",
-            lineHeight: 1.625,
-            marginBottom: "2rem",
-          }}
-        >
-          We're currently performing some scheduled maintenance to improve our
-          luxury reselling experience. We'll be back shortly!
-        </p>
-        <div
-          style={{
-            opacity: 0.5,
-            fontSize: "0.875rem",
-            fontWeight: 600,
-            letterSpacing: "0.1em",
-            textTransform: "uppercase",
-          }}
-        >
-          &copy; {new Date().getFullYear()} VauntVault.
-        </div>
-      </div>
-    </div>
+      <Center mih="100vh" p="xl">
+        <Container size="xs" pos="relative" zIndex={10} ta="center">
+          <Stack gap="xl">
+            <Title
+              order={1}
+              ff="'Cinzel', 'Playfair Display', 'Georgia', serif"
+              fw={700}
+              style={{ fontSize: "2.25rem", letterSpacing: "-0.025em" }}
+            >
+              Under Maintenance
+            </Title>
+
+            <Text opacity={0.7} size="lg" lh={1.625}>
+              We're currently performing some scheduled maintenance to improve
+              our luxury reselling experience. We'll be back shortly!
+            </Text>
+
+            <Text
+              opacity={0.5}
+              size="sm"
+              fw={600}
+              tt="uppercase"
+              style={{ letterSpacing: "0.1em" }}
+            >
+              &copy; {new Date().getFullYear()} VauntVault.
+            </Text>
+          </Stack>
+        </Container>
+      </Center>
+    </Box>
   );
 }
