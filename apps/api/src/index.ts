@@ -33,7 +33,7 @@ export const app = new Elysia({ prefix: "/api" })
   .use(cartRouter)
   .use(checkoutRouter)
   .use(contactRouter)
-  .listen(3001);
+  .listen(process.env.PORT || 8000);
 
 console.log(`🦊 Elysia API is running at ${app.server?.hostname}:${app.server?.port}`);
 

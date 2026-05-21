@@ -16,7 +16,7 @@ services:
     build:
       context: ../apps/api
     ports:
-      - "3001:3001"
+      - "8000:8000"
     environment:
       - DATABASE_URL=postgres://admin:password@postgres-db:5432/vauntvault
     depends_on:
@@ -28,7 +28,7 @@ services:
     ports:
       - "3000:3000"
     environment:
-      - NEXT_PUBLIC_API_URL=http://localhost:3001
+      - NEXT_PUBLIC_API_URL=http://localhost:8000
     depends_on:
       - elysia-api
 

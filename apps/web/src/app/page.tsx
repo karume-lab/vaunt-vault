@@ -14,17 +14,18 @@ export default function Home() {
         textAlign: "center",
       }}
     >
-      <Title
-        order={1}
-        size="h1"
-        fw={900}
-        variant="gradient"
-        gradient={{ from: "lime", to: "teal", deg: 45 }}
-      >
-        Welcome to Vaunt Vault
+      <Title order={1} size="h1" fw={900}>
+        <Text
+          component="span"
+          inherit
+          variant="gradient"
+          gradient={{ from: "lime", to: "teal", deg: 45 }}
+        >
+          Welcome to Vaunt Vault
+        </Text>
       </Title>
       <Text c="dimmed" mt="md" size="lg" maw={600}>
-        Your new application is ready. Built with Next.js, Mantine, ORPC, and
+        Your new application is ready. Built with Next.js, Mantine, Elysia, and
         Better Auth.
       </Text>
       <Group mt={30} justify="center">
