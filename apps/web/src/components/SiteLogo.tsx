@@ -1,6 +1,6 @@
 import { Image as MantineImage } from "@mantine/core";
 import Image from "next/image";
-import Logo from "../../public/images/core/logo.png";
+import Logo from "../../public/images/core/logo.webp";
 
 const SiteLogo = () => {
   return (

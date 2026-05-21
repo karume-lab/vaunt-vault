@@ -46,7 +46,7 @@ export default function Maintenance() {
         <Center className="bouncing-logo" pos="absolute" w={150} h={150}>
           <MantineImage
             component={NextImage}
-            src="/images/core/logo.png"
+            src="/images/core/logo.webp"
             alt="VauntVault Logo"
             width={150}
             height={150}
