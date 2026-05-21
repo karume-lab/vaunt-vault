@@ -3,6 +3,7 @@
 import { Box, Center, Container, Stack, Text, Title } from "@mantine/core";
 import NextImage from "next/image";
 import { useEffect, useRef } from "react";
+import PoweredByFooter from "@/components/PoweredByFooter";
 
 const LOGO_SIZE = 150;
 const DEFAULT_SPEED = 1.25; // slow idle bounce speed (px per frame)
@@ -213,28 +214,7 @@ export default function Maintenance() {
       </Center>
 
       {/* Footer */}
-      <Box
-        pos="fixed"
-        bottom={0}
-        left={0}
-        right={0}
-        py="sm"
-        ta="center"
-        style={{ zIndex: 10 }}
-      >
-        <Text opacity={0.4} size="xs">
-          Powered by{" "}
-          <Text
-            component="a"
-            href="https://karume.vercel.app"
-            target="_blank"
-            size="xs"
-            style={{ textDecoration: "underline", color: "inherit" }}
-          >
-            karume-lab ↗
-          </Text>
-        </Text>
-      </Box>
+      <PoweredByFooter />
     </Box>
   );
 }
