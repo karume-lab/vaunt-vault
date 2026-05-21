@@ -1,5 +1,5 @@
 import { useMantineTheme } from "@mantine/core";
-import { sendEmail } from "@/lib/utils/send-email";
+import { sendEmail } from "@web/lib/utils/send-email";
 
 export const getPrimaryColorHexCode = () => {
   const theme = useMantineTheme();

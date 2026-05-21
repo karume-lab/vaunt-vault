@@ -1,5 +1,5 @@
 import type { ComboboxItem } from "@mantine/core";
-import type { ProfileTypes as P } from "@/lib/constants";
+import type { ProfileTypes as P } from "@web/lib/constants";
 
 export type ProfileType = `${P}`;
 

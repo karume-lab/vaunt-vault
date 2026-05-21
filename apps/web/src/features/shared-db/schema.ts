@@ -1,1 +1,1 @@
-export * from "../auth/db/auth-schema";
+export * from "@web/features/auth/db/auth-schema";

@@ -6,12 +6,12 @@ import "@mantine/dropzone/styles.css";
 import "@mantine/notifications/styles.css";
 import "@mantine/tiptap/styles.css";
 import "@gfazioli/mantine-marquee/styles.css";
-import "@/styles/global.css";
+import "@web/styles/global.css";
 
 import { ColorSchemeScript, mantineHtmlProps } from "@mantine/core";
+import Providers from "@web/components/Providers";
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
-import Providers from "@/components/Providers";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",

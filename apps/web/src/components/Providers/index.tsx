@@ -3,10 +3,10 @@
 import { MantineProvider } from "@mantine/core";
 import { ModalsProvider } from "@mantine/modals";
 import { Notifications } from "@mantine/notifications";
+import TanstackQueryClientProvider from "@web/components/Providers/TanstackQueryClientProvider";
+import { theme } from "@web/styles/mantine-theme";
 import { NuqsAdapter } from "nuqs/adapters/next/app";
 import type React from "react";
-import TanstackQueryClientProvider from "@/components/Providers/TanstackQueryClientProvider";
-import { theme } from "@/styles/mantine-theme";
 
 interface ProvidersProps
   extends Readonly<{

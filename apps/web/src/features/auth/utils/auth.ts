@@ -1,17 +1,17 @@
+import { db } from "@web/features/shared-db/client";
+import {
+  account,
+  session,
+  user,
+  verification,
+} from "@web/features/shared-db/schema";
+import { sendEmail } from "@web/lib/utils";
 import { betterAuth } from "better-auth";
 import { drizzleAdapter } from "better-auth/adapters/drizzle";
 import { APIError } from "better-auth/api";
 import { nextCookies } from "better-auth/next-js";
 import { admin, emailOTP } from "better-auth/plugins";
 import { eq } from "drizzle-orm";
-import { db } from "@/features/shared-db/client";
-import {
-  account,
-  session,
-  user,
-  verification,
-} from "@/features/shared-db/schema";
-import { sendEmail } from "@/lib/utils";
 
 export const auth = betterAuth({
   database: drizzleAdapter(db, {

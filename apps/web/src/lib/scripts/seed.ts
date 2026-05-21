@@ -1,6 +1,6 @@
+import { pool } from "@web/features/shared-db/client";
 import { drizzle } from "drizzle-orm/node-postgres";
 import { seed } from "drizzle-seed";
-import { pool } from "@/features/shared-db/client";
 
 const db = drizzle(pool);
 
