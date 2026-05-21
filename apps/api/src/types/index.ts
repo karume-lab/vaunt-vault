@@ -6,7 +6,7 @@ import type {
   categories,
   products,
   productVariants,
-} from "@/db/schema";
+} from "@api/db/schema";
 
 // Select Models
 export type Category = InferSelectModel<typeof categories>;

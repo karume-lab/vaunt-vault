@@ -16,7 +16,7 @@
     "types": ["bun-types"],
     "baseUrl": ".",
     "paths": {
-      "@/*": ["./src/*"]
+      "@api/*": ["./src/*"]
     }
   }
 }

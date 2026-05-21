@@ -1,5 +1,6 @@
 import { relations } from "drizzle-orm";
 import {
+  type AnyPgColumn,
   bigserial,
   boolean,
   decimal,
@@ -23,7 +24,7 @@ export const categoriesRelations = relations(categories, ({ many }) => ({
 
 export const products = pgTable("products", {
   id: uuid("id").primaryKey().defaultRandom(),
-  categoryId: uuid("category_id").references(() => categories.id, {
+  categoryId: uuid("category_id").references((): AnyPgColumn => categories.id, {
     onDelete: "cascade",
   }),
   title: varchar("title").notNull(),
@@ -44,7 +45,7 @@ export const productsRelations = relations(products, ({ one, many }) => ({
 
 export const productVariants = pgTable("product_variants", {
   id: uuid("id").primaryKey().defaultRandom(),
-  productId: uuid("product_id").references(() => products.id, {
+  productId: uuid("product_id").references((): AnyPgColumn => products.id, {
     onDelete: "cascade",
   }),
   color: varchar("color"),
@@ -89,12 +90,18 @@ export const cartSessionsRelations = relations(cartSessions, ({ many }) => ({
 
 export const cartItems = pgTable("cart_items", {
   id: uuid("id").primaryKey().defaultRandom(),
-  cartSessionId: uuid("cart_session_id").references(() => cartSessions.id, {
-    onDelete: "cascade",
-  }),
-  variantId: uuid("variant_id").references(() => productVariants.id, {
-    onDelete: "cascade",
-  }),
+  cartSessionId: uuid("cart_session_id").references(
+    (): AnyPgColumn => cartSessions.id,
+    {
+      onDelete: "cascade",
+    },
+  ),
+  variantId: uuid("variant_id").references(
+    (): AnyPgColumn => productVariants.id,
+    {
+      onDelete: "cascade",
+    },
+  ),
   quantity: integer("quantity").default(1),
 });
 
