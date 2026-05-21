@@ -2,12 +2,7 @@ import { cors } from "@elysiajs/cors";
 import { Elysia, t } from "elysia";
 import { auth } from "./auth";
 
-const productsRouter = new Elysia({ prefix: "/products" })
-  .get("/", () => "Products listing")
-  .get("/:id", ({ params }) => `Product ${params.id}`, {
-    params: t.Object({ id: t.String() })
-  });
-
+import { productsRouter } from "./routes/products";
 const adminRouter = new Elysia({ prefix: "/admin" })
   .get("/metrics", () => "Admin metrics");
 
