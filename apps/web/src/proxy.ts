@@ -1,7 +1,7 @@
 import type { NextRequest } from "next/server";
 import { NextResponse } from "next/server";
 
-export function proxy(request: NextRequest) {
+export default function proxy(request: NextRequest) {
   const isMaintenanceMode = process.env.MAINTENANCE_MODE === "true";
   const url = request.nextUrl;
 
