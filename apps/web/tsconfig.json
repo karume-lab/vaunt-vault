@@ -22,7 +22,7 @@
     "paths": {
       "@web/*": ["./src/*"],
       "@/*": ["./src/*"],
-      "@api/*": ["../api/src/*"]
+      "@api": ["../api/src/index.ts"]
     }
   },
   "include": [

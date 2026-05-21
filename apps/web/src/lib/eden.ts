@@ -1,4 +1,4 @@
-import type { App } from "@api/index";
+import type { App } from "@api";
 import { treaty } from "@elysiajs/eden";
 
 // Instantiate Eden Treaty client pointing to our standalone Elysia backend

@@ -29,7 +29,7 @@ const contactRouter = new Elysia({ prefix: "/contact" }).post(
 
 export const app = new Elysia({ prefix: "/api" })
   .use(cors({ origin: process.env.FRONTEND_URL || "http://localhost:3000" }))
-  .all("/auth/*", ({ request }) => auth.handler(request))
+  .mount("/api/auth", auth.handler)
   .use(productsRouter)
   .use(adminRouter)
   .use(cartRouter)

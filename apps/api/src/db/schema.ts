@@ -92,15 +92,11 @@ export const cartItems = pgTable("cart_items", {
   id: uuid("id").primaryKey().defaultRandom(),
   cartSessionId: uuid("cart_session_id").references(
     (): AnyPgColumn => cartSessions.id,
-    {
-      onDelete: "cascade",
-    },
+    { onDelete: "cascade" },
   ),
   variantId: uuid("variant_id").references(
     (): AnyPgColumn => productVariants.id,
-    {
-      onDelete: "cascade",
-    },
+    { onDelete: "cascade" },
   ),
   quantity: integer("quantity").default(1),
 });
