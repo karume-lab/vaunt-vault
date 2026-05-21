@@ -1,0 +1,36 @@
+version: '3.8'
+
+services:
+  postgres-db:
+    image: postgres:15-alpine
+    environment:
+      POSTGRES_USER: admin
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: vauntvault
+    ports:
+      - "5432:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+
+  elysia-api:
+    build:
+      context: ../apps/api
+    ports:
+      - "3001:3001"
+    environment:
+      - DATABASE_URL=postgres://admin:password@postgres-db:5432/vauntvault
+    depends_on:
+      - postgres-db
+
+  next-web:
+    build:
+      context: ../apps/web
+    ports:
+      - "3000:3000"
+    environment:
+      - NEXT_PUBLIC_API_URL=http://localhost:3001
+    depends_on:
+      - elysia-api
+
+volumes:
+  pgdata:

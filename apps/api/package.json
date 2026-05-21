@@ -1,0 +1,19 @@
+{
+  "name": "@vaunt-vault/api",
+  "type": "module",
+  "scripts": {
+    "dev": "bun run --watch src/index.ts"
+  },
+  "dependencies": {
+    "elysia": "^1.1.23",
+    "@elysiajs/cors": "^1.1.1",
+    "better-auth": "^1.6.11",
+    "@sinclair/typebox": "^0.33.17",
+    "drizzle-orm": "^0.45.2",
+    "nodemailer": "^8.0.7",
+    "pg": "^8.21.0"
+  },
+  "devDependencies": {
+    "bun-types": "latest"
+  }
+}

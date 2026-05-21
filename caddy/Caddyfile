@@ -1,0 +1,21 @@
+{
+  email {$EMAIL}
+}
+
+yourdomain.com {
+  # Reverse proxy API endpoints directly to Elysia backend
+  handle /api/* {
+    reverse_proxy elysia-api:3001
+  }
+
+  handle /api/auth/* {
+    reverse_proxy elysia-api:3001
+  }
+
+  # Reverse proxy all fallback routes to Next.js frontend
+  handle {
+    reverse_proxy next-web:3000
+  }
+
+  encode gzip zstd
+}
