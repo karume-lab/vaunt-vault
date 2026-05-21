@@ -1,8 +1,10 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  /* config options here */
   reactCompiler: true,
+  env: {
+    MAINTENANCE_MODE: process.env.MAINTENANCE_MODE,
+  },
 };
 
 export default nextConfig;
