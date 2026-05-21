@@ -228,12 +228,10 @@ export default function Maintenance() {
             component="a"
             href="https://karume.vercel.app"
             target="_blank"
-            rel="noopener noreferrer"
-            opacity={0.4}
             size="xs"
             style={{ textDecoration: "underline", color: "inherit" }}
           >
-            karume-lab
+            karume-lab ↗
           </Text>
         </Text>
       </Box>
