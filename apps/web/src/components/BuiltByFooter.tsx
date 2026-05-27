@@ -1,6 +1,6 @@
 import { Box, Text } from "@mantine/core";
 
-export default function PoweredByFooter() {
+export default function BuiltByFooter() {
   return (
     <Box
       pos="fixed"
@@ -12,7 +12,7 @@ export default function PoweredByFooter() {
       style={{ zIndex: 10 }}
     >
       <Text opacity={0.4} size="xs">
-        Powered by{" "}
+        Built by{" "}
         <Text
           component="a"
           href="https://karume.vercel.app"
